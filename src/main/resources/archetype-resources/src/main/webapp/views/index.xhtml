@@ -1,0 +1,22 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<!DOCTYPE html>
+<ui:composition template="../templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="title">${symbol_pound}{msg.helloWorld}</ui:define>
+
+    <ui:define name="content">
+        <h1>${symbol_pound}{msg.helloWorld}</h1>
+        <ul>
+            <li><h:link outcome="sampleForm" value="Sample form"/></li>
+            <li><h:link outcome="samplePage" value="Sample page"><f:param name="name" value="user"/></h:link></li>
+        </ul>
+    </ui:define>
+
+</ui:composition>

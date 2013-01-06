@@ -1,0 +1,45 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<!DOCTYPE html>
+<ui:composition template="../templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="title">Sample form</ui:define>
+
+    <ui:define name="content">
+        <h1>Sample form</h1>
+
+        <p:panel>
+            <h:form>
+                <h:panelGrid columns="3">
+                    <p:outputLabel for="name" value="${symbol_pound}{msg['input.name.label']}"/>
+                    <p:inputText id="name" value="${symbol_pound}{sampleFormBean.user.name}" required="true"/>
+                    <p:message for="name"/> 
+
+                    <p:outputLabel for="birthdate" value="${symbol_pound}{msg['input.birthdate.label']}"/>
+                    <p:calendar id="birthdate" value="${symbol_pound}{sampleFormBean.user.birthdate}" />  
+                    <p:message for="birthdate"/>
+
+                    <p:outputLabel for="email" value="${symbol_pound}{msg['input.email.label']}"/>
+                    <p:inputText id="email" value="${symbol_pound}{sampleFormBean.user.email}"/>
+                </h:panelGrid>
+                <p:spacer/>
+                <p:commandButton value="${symbol_pound}{msg['form.submit']}" update="@form, :userInfo" action="${symbol_pound}{sampleFormBean.submit}"/>
+            </h:form>
+        </p:panel>
+        <p:spacer/>
+        <p:panel id="userInfo" visible="${symbol_pound}{not empty sampleFormBean.greeting}">
+            <h2>${symbol_pound}{sampleFormBean.greeting}</h2>
+            <p>${symbol_dollar}{msg['input.email.label']}: <strong>${symbol_pound}{sampleFormBean.user.email}</strong></p>
+            <p>${symbol_dollar}{msg['input.birthdate.label']}: <strong><h:outputText value="${symbol_pound}{sampleFormBean.user.birthdate}">
+                        <f:convertDateTime type="date"/></h:outputText></strong></p>
+        </p:panel>
+        <p><h:link outcome="index" value="${symbol_pound}{msg['link.home']}"/></p>
+    </ui:define>
+
+</ui:composition>

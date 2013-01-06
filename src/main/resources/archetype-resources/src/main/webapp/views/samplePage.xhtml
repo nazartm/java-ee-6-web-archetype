@@ -1,0 +1,26 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<!DOCTYPE html>
+<ui:composition template="../templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <f:metadata>
+        <f:viewParam name="name" value="${symbol_pound}{samplePageBean.name}" required="true" requiredMessage="${symbol_pound}{msg['page.query.validation.name']}"/>
+        <f:event type="preRenderView" listener="${symbol_pound}{samplePageBean.populate}" />
+    </f:metadata>
+
+    <ui:define name="title">Simple page</ui:define>
+
+    <ui:define name="content">
+        <h1>Simple page</h1>
+        <p:messages/>
+        <h2>${symbol_pound}{samplePageBean.greeting}</h2>
+        <p>${symbol_pound}{msg['page.simplePage.text']}</p>
+        <p><h:link outcome="index" value="Home"/></p>
+    </ui:define>
+
+</ui:composition>
